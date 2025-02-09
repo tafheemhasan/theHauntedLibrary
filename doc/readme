@@ -1,0 +1,94 @@
+# The Haunted Library - A Text Adventure Game
+
+## Theme and Story
+In this game, you find yourself trapped in a haunted library at 2 AM! After falling asleep in the reference section, you wake up to find the library has transformed into something supernatural. Your goal is to escape, but you'll need to solve puzzles and deal with a ghostly librarian to get out alive.
+
+## Game Strategy and Walkthrough
+To escape the library, you need to:
+1. Start in Reference Section
+   - Find the flashlight
+   - Read the notice on north door about needing a passcode
+
+2. Get Library Card from Main Lobby
+   - Answer the ghost librarian's riddle (hint: it's about something you find in libraries!)
+   - You only get 2 chances to answer correctly
+
+3. Find the Passcode
+   - Go to Ancient Tome Room and get the ancient tome
+   - Use library card to enter Mystery Room
+   - Use flashlight to see in the dark room
+   - Get the passcode
+
+4. Get the Master Key
+   - Return to Reference Section
+   - Use passcode to unlock north door
+   - Enter Archives and get master key
+
+5. Escape
+   - Return to entrance
+   - Use master key to escape
+
+## Game Implementation Details
+I made this game using Scala 3 and split it into different parts:
+
+1. Area.scala
+   - Handles all room-related stuff
+   - Keeps track of items in rooms
+   - Manages dark/lit conditions
+   - Controls locked/unlocked states
+
+2. Player.scala
+   - Manages inventory (max 3 items!)
+   - Handles movement between rooms
+   - Controls item usage
+   - Tracks riddle attempts
+
+3. Action.scala
+   - Processes player commands
+   - Connects player input to game actions
+
+4. Adventure.scala
+   - Sets up the game world
+   - Creates all areas and connections
+   - Places items in rooms
+   - Tracks game progress
+
+## Game Commands
+- `go [direction]`: Move between rooms (north, south, east, west)
+- `get [item]`: Pick up items (but remember 3-item limit!)
+- `drop [item]`: Drop items from inventory
+- `read [item]`: Read notices or books
+- `use [item]`: Use items in specific places
+- `examine [item]`: Look at items closely
+- `inventory`: Check what you're carrying
+- `answer [word]`: Answer the librarian's riddle
+- `help`: Show all commands
+- `quit`: End game
+
+## Special Features I Added
+1. Dark Room Mechanics
+   - Can't see items without flashlight
+   - Flashlight needs to be used in each room
+   - Special case: Can always see/get flashlight in dark
+
+2. Inventory Management
+   - Three-item limit makes you think about what to carry
+   - Need to drop items strategically
+
+3. Progressive Puzzles
+   - Each puzzle leads to next
+   - Items have specific uses in specific places
+   - Can't skip steps or sequence
+
+## Why I Made These Choices
+1. Split code into different files because:
+   - Easier to understand and debug
+   - Each file handles specific tasks
+   - Better organization
+
+2. Added GUI and Text interfaces:
+   - Text version is simple but works everywhere
+   - GUI version looks nicer and is easier to use
+
+## Note to Reviewers
+This is my first big programming project. I tried to make the code clean and added lots of comments to explain what everything does. The game might have some small bugs, but the main features all work as intended.
